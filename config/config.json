@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "paywall": {
+    "headline": "Welcome back",
+    "subheadline": "Your menstrual phase plan is waiting.",
+    "benefits": [
+      "Cycle-synced fasting plans",
+      "Know why some weeks hit harder",
+      "Mochi's there for the hard hours",
+      "Your data stays on your device"
+    ]
+  },
+  "tips": {
+    "menstrual": [
+      "Rest and nourish. Shorter fasts are ideal right now.",
+      "Your body needs extra care during menstruation. Be gentle.",
+      "Iron-rich foods are extra important during your period."
+    ],
+    "follicular": [
+      "Rising estrogen = rising energy. Great time for longer fasts!",
+      "Your body is primed for a challenge. Push yourself!",
+      "Follicular phase is a great time to build your fasting routine."
+    ],
+    "ovulation": [
+      "Peak energy! Moderate fasting keeps you balanced.",
+      "You're at your strongest, a great time to try new recipes.",
+      "Ovulation means peak performance. Enjoy the energy!"
+    ],
+    "luteal": [
+      "Be gentle. Your body needs more fuel before your period.",
+      "Progesterone is rising, shorter fasts prevent burnout.",
+      "Cravings are normal in the luteal phase. Listen to your body."
+    ]
+  },
+  "protocols": {
+    "menstrual": "13:11",
+    "follicular": "16:8",
+    "ovulation": "14:10",
+    "luteal": "13:11"
+  }
+}
