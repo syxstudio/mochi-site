@@ -47,7 +47,14 @@
         <p>Mochi uses RevenueCat to manage subscriptions and in-app purchases. RevenueCat processes your subscription status through Apple's App Store. RevenueCat may collect anonymous purchase data and device identifiers for subscription management purposes. For details, see <a href="https://www.revenuecat.com/privacy/" style="color: #F8A4B8;">RevenueCat's Privacy Policy</a>.</p>
 
         <h2>Analytics</h2>
-        <p>Mochi does not collect any analytics data. We do not track your usage, behavior, or any other information. The only third-party service we use is RevenueCat for subscription management as described above.</p>
+        <p>We use PostHog (hosted in the EU) to understand how people move through the app's onboarding and paywall, so we can improve conversion and flow. PostHog receives only:</p>
+        <ul>
+            <li>Screen names you view (e.g. "goal", "paywall")</li>
+            <li>Anonymous button events (e.g. "trial started")</li>
+            <li>Device type and app version</li>
+        </ul>
+        <p>PostHog never receives your cycle data, fasting history, weight, mood, chat messages, or any personal health information. All health data stays on your device (and in your iCloud if you have it enabled).</p>
+        <p>Session replay is disabled. No screen recording ever.</p>
 
         <h2>Data We Do NOT Collect</h2>
         <ul>
