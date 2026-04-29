@@ -47,21 +47,26 @@
         <p>Mochi uses RevenueCat to manage subscriptions and in-app purchases. RevenueCat processes your subscription status through Apple's App Store. RevenueCat may collect anonymous purchase data and device identifiers for subscription management purposes. For details, see <a href="https://www.revenuecat.com/privacy/" style="color: #F8A4B8;">RevenueCat's Privacy Policy</a>.</p>
 
         <h2>Analytics</h2>
-        <p>We use PostHog (hosted in the EU) to understand how people move through the app's onboarding and paywall, so we can improve conversion and flow. PostHog receives only:</p>
+        <p>We use PostHog (hosted in the EU) to understand how people use Mochi so we can improve the app. PostHog receives:</p>
         <ul>
             <li>Screen names you view (e.g. "goal", "paywall")</li>
             <li>Anonymous button events (e.g. "trial started")</li>
             <li>Device type and app version</li>
+            <li>Onboarding survey answers (e.g. selected fasting protocol, eating window, goals) tied to an anonymous device-generated ID</li>
+            <li>Companion (AI chat) conversations: messages you send and the AI's replies, used to improve Mochi's voice and tone over time</li>
+            <li>Anonymous metrics about each AI call (model, response time, token counts, error rates)</li>
         </ul>
-        <p>PostHog never receives your cycle data, fasting history, weight, mood, chat messages, or any personal health information. All health data stays on your device (and in your iCloud if you have it enabled).</p>
-        <p>Session replay is disabled. No screen recording ever.</p>
+        <p>PostHog does <strong>not</strong> receive: your cycle dates, last period date, cycle length, weight values, mood/energy logs, fast start and end times, or any other on-device health entries.</p>
+        <p>Session replay (screen recording) is permanently disabled. We never record your screen.</p>
+        <p>If you'd rather not have AI chat conversations logged, you can simply not use the Mochi companion feature. The rest of the app works without it.</p>
 
         <h2>Data We Do NOT Collect</h2>
         <ul>
             <li>We do not collect your name, email address, or account information.</li>
             <li>We do not track your location.</li>
             <li>We do not use advertising SDKs or sell your data.</li>
-            <li>We do not share your health or cycle data with any third party.</li>
+            <li>We do not share your data with any third party other than PostHog (analytics, EU-hosted) and RevenueCat (subscription billing).</li>
+            <li>We do not collect health data (cycle dates, weight, fasting times, mood entries) — those stay on your device.</li>
         </ul>
 
         <h2>Data Retention and Deletion</h2>
