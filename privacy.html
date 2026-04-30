@@ -1,3 +1,28 @@
+<!-- ⚠️ DEPENDENCY CONTRACT
+     This file is part of: Privacy Policy ↔ App Behaviors + Contact Email
+
+     IF YOU CHANGE THIS, ALSO UPDATE:
+       SDKs / data collection declared here must match actual app behavior:
+         - RevenueCat (subscriptions) — declared; if removed from app, remove here
+         - CloudKit private container — declared; if storage changes, update here
+         - PostHog (analytics, EU-hosted) — declared; if PostHog removed/changed, update here
+         - Anthropic Claude via Cloudflare Worker (AI companion) — declared; if companion removed, update here
+         - Companion conversation logging — currently declared as sent to PostHog; if logging removed, update here
+         - "No HealthKit" — if HealthKit is ever added, this must be updated BEFORE App Store submission
+
+       Contact email (syxstudio.app@gmail.com):
+         - mochi-site/terms.html — same email in contact section
+         - mochi-site/support.html — same email in contact box
+         - app/Mochi/Views/Settings/SettingsView.swift — mailto link
+         - app/Mochi/Views/Home/HomeView.swift — mailto link
+
+       Site URL (hardcoded in iOS app):
+         - app/Mochi/Views/Onboarding/Screens/OBPaywallScreen.swift — links here
+         - app/Mochi/App/ContentView.swift — links here
+         - app/Mochi/Views/Settings/SettingsView.swift — links here
+
+     See .claude/dependency-map.md for the full map.
+-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,22 +51,23 @@
     <div class="container">
         <a href="index.html" class="back">&larr; Back</a>
         <h1>Privacy Policy</h1>
-        <p class="updated">Last updated: March 9, 2026</p>
+        <p class="updated">Last updated: April 29, 2026</p>
 
         <h2>Overview</h2>
         <p>Mochi ("we", "our", or "the app") is an intermittent fasting app designed for women who want to sync their fasting schedule with their menstrual cycle. We are committed to protecting your privacy. This policy explains what data we collect, how we use it, and your rights.</p>
 
         <h2>Data Storage</h2>
-        <p>All personal data you enter into Mochi is stored locally on your device. We do not operate servers, databases, or cloud storage. Your data never leaves your device except as described below.</p>
+        <p>Your personal data is stored on your device using Apple's SwiftData framework and synced to your private iCloud container so the data follows your Apple ID across devices. We do not operate user databases of your health information &mdash; the synced copy lives in your own iCloud account, which Apple does not give us access to. The only server we operate is a thin proxy that forwards AI companion requests to Anthropic (see "AI Companion" below).</p>
 
         <h2>Data We Collect</h2>
-        <p>The following data is created and stored locally on your device:</p>
+        <p>The following data is created on your device and synced to your private iCloud container:</p>
         <ul>
-            <li><strong>Cycle information:</strong> Last period date, cycle length, and calculated cycle phases. This data is stored on-device only using Apple's SwiftData framework.</li>
-            <li><strong>Fasting sessions:</strong> Start time, end time, duration, and body status phases reached. Stored on-device only.</li>
-            <li><strong>Mood and energy logs:</strong> Optional mood and energy entries you choose to record. Stored on-device only.</li>
-            <li><strong>Preferences:</strong> Your app settings, notification preferences, and onboarding choices. Stored on-device only.</li>
+            <li><strong>Cycle information:</strong> Last period date, cycle length, and calculated cycle phases.</li>
+            <li><strong>Fasting sessions:</strong> Start time, end time, duration, and body status phases reached.</li>
+            <li><strong>Mood and energy logs:</strong> Optional mood and energy entries you choose to record.</li>
+            <li><strong>Preferences:</strong> Your app settings, notification preferences, and onboarding choices.</li>
         </ul>
+        <p>This data lives in your own iCloud private container. We do not have access to it. If you sign out of iCloud or disable iCloud Drive for Mochi, the data stays on the device only.</p>
 
         <h2>Subscriptions</h2>
         <p>Mochi uses RevenueCat to manage subscriptions and in-app purchases. RevenueCat processes your subscription status through Apple's App Store. RevenueCat may collect anonymous purchase data and device identifiers for subscription management purposes. For details, see <a href="https://www.revenuecat.com/privacy/" style="color: #F8A4B8;">RevenueCat's Privacy Policy</a>.</p>
@@ -56,17 +82,26 @@
             <li>Companion (AI chat) conversations: messages you send and the AI's replies, used to improve Mochi's voice and tone over time</li>
             <li>Anonymous metrics about each AI call (model, response time, token counts, error rates)</li>
         </ul>
-        <p>PostHog does <strong>not</strong> receive: your cycle dates, last period date, cycle length, weight values, mood/energy logs, fast start and end times, or any other on-device health entries.</p>
+        <p>Outside of the AI companion (described below), PostHog does <strong>not</strong> receive: your cycle dates, last period date, cycle length, weight values, mood/energy logs, fast start and end times, or any other on-device health entries.</p>
         <p>Session replay (screen recording) is permanently disabled. We never record your screen.</p>
-        <p>If you'd rather not have AI chat conversations logged, you can simply not use the Mochi companion feature. The rest of the app works without it.</p>
+
+        <h2>AI Companion</h2>
+        <p>Mochi includes an opt-in AI chat feature ("the companion") powered by Anthropic's Claude. You must accept a consent screen before using it. When you send a message:</p>
+        <ul>
+            <li>Your message and a small context summary (current fast progress, recent fast history, today's body status, whether you are on your period, days since your last period, your fasting protocol, your eating window, mood/energy if recently logged) are sent through a Cloudflare Worker we operate to Anthropic's API.</li>
+            <li>Anthropic processes the request and returns a reply. Per Anthropic's commercial terms, your messages are not used to train their models.</li>
+            <li>We do not store your AI conversations on our own servers. The Cloudflare Worker is a stateless proxy.</li>
+            <li>Both your messages and the AI's replies are sent to PostHog (analytics) so we can review the quality of the experience and tune Mochi's voice. Crisis-related responses are filtered before logging.</li>
+        </ul>
+        <p>If you'd rather not have AI chat conversations logged or sent to Anthropic, you can decline the consent screen, or disable the AI companion in Settings. The rest of the app works without it, and your on-device health data is not transmitted anywhere.</p>
 
         <h2>Data We Do NOT Collect</h2>
         <ul>
             <li>We do not collect your name, email address, or account information.</li>
             <li>We do not track your location.</li>
             <li>We do not use advertising SDKs or sell your data.</li>
-            <li>We do not share your data with any third party other than PostHog (analytics, EU-hosted) and RevenueCat (subscription billing).</li>
-            <li>We do not collect health data (cycle dates, weight, fasting times, mood entries) — those stay on your device.</li>
+            <li>We do not share your data with any third party other than PostHog (analytics, EU-hosted), RevenueCat (subscription billing), and Anthropic (only when you use the opt-in AI companion).</li>
+            <li>We do not store your health data (cycle dates, weight, fasting times, mood entries) on our servers. Those stay on your device, except for the small context summary sent to the AI companion if you choose to use it.</li>
         </ul>
 
         <h2>Data Retention and Deletion</h2>

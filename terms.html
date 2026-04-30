@@ -1,3 +1,28 @@
+<!-- ⚠️ DEPENDENCY CONTRACT
+     This file is part of: Pricing & Trial Terms + Contact Email
+
+     IF YOU CHANGE THIS, ALSO UPDATE:
+       Pricing / trial terms (currently: $14.99/mo, $99/yr, 3-day trial):
+         - app/Mochi/App/ContentView.swift — plan card strings (fallback when RevenueCat unavailable)
+         - app/Mochi/Views/Onboarding/Screens/OBPaywallScreen.swift — priceLine fallback in OnboardingPaywallCopy
+         - app/Mochi/Models/OnboardingConfig.swift — OnboardingPaywallCopy.priceLine default
+         - app/Mochi/Resources/Mochi.storekit — displayPrice for StoreKit test config
+         - App Store Connect (external) — product pricing
+         - RevenueCat dashboard (external) — offerings
+
+       Contact email (syxstudio.app@gmail.com):
+         - mochi-site/privacy.html — contact section
+         - mochi-site/support.html — contact box
+         - app/Mochi/Views/Settings/SettingsView.swift — mailto link
+         - app/Mochi/Views/Home/HomeView.swift — mailto link
+
+       Site URL (hardcoded in iOS app):
+         - app/Mochi/Views/Onboarding/Screens/OBPaywallScreen.swift — links here
+         - app/Mochi/App/ContentView.swift — links here
+         - app/Mochi/Views/Settings/SettingsView.swift — links here
+
+     See .claude/dependency-map.md for the full map.
+-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
