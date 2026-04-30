@@ -10,9 +10,12 @@
          - Companion conversation logging — currently declared as sent to PostHog; if logging removed, update here
          - "No HealthKit" — if HealthKit is ever added, this must be updated BEFORE App Store submission
 
-       Contact email (syxstudio.app@gmail.com):
-         - mochi-site/terms.html — same email in contact section
-         - mochi-site/support.html — same email in contact box
+       Contact email:
+         Public surfaces use admin@syxstudio.com (forwards to syxstudio.app@gmail.com via Cloudflare Email Routing).
+         - mochi-site/index.html — homepage contact section
+         - mochi-site/terms.html — contact section
+         - mochi-site/support.html — contact box
+         iOS app mailto links still use syxstudio.app@gmail.com (legacy, both reach same inbox):
          - app/Mochi/Views/Settings/SettingsView.swift — mailto link
          - app/Mochi/Views/Home/HomeView.swift — mailto link
 
@@ -28,41 +31,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy Policy - Mochi</title>
+    <title>Privacy Policy · SYX Studio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        *, *::before, *::after { box-sizing: border-box; }
+        html, body { margin: 0; padding: 0; }
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: #FFF5F5;
-            color: #2D2D2D;
-            line-height: 1.7;
+            font-family: "DM Sans", -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            background: #faf9f6;
+            color: #2a221b;
+            line-height: 1.65;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
-        .container { max-width: 640px; margin: 0 auto; padding: 40px 24px; }
-        .back { display: inline-block; margin-bottom: 24px; color: #F8A4B8; text-decoration: none; font-weight: 600; }
-        h1 { font-size: 2rem; color: #F8A4B8; margin-bottom: 8px; }
-        .updated { font-size: 0.9rem; color: #999; margin-bottom: 32px; }
-        h2 { font-size: 1.2rem; margin: 28px 0 12px; color: #333; }
-        p, li { font-size: 0.95rem; color: #555; margin-bottom: 12px; }
-        ul { padding-left: 20px; }
+        .container { max-width: 720px; margin: 0 auto; padding: 64px 32px; }
+        .back { display: inline-block; margin-bottom: 40px; color: #c16342; text-decoration: none; font-weight: 500; font-size: 14px; transition: opacity .15s; }
+        .back:hover { opacity: 0.7; }
+        h1 { font-size: 2.25rem; color: #2a221b; margin-bottom: 8px; font-weight: 500; letter-spacing: -0.025em; line-height: 1.1; }
+        .updated { font-size: 0.85rem; color: rgba(42,34,27,0.5); margin-bottom: 40px; font-weight: 400; }
+        h2 { font-size: 1.1rem; margin: 36px 0 14px; color: #2a221b; font-weight: 600; letter-spacing: -0.005em; }
+        p, li { font-size: 0.95rem; color: rgba(42,34,27,0.78); margin-bottom: 12px; }
+        ul { padding-left: 20px; margin-bottom: 12px; }
         li { margin-bottom: 8px; }
+        strong { color: #2a221b; font-weight: 600; }
+        a { color: #c16342; text-decoration: none; border-bottom: 0.5px solid rgba(193,99,66,0.35); transition: opacity .15s; }
+        a:hover { opacity: 0.7; }
+        .back { border-bottom: none; }
+        @media (max-width: 640px) {
+            .container { padding: 40px 20px; }
+            h1 { font-size: 1.85rem; }
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <a href="index.html" class="back">&larr; Back</a>
         <h1>Privacy Policy</h1>
-        <p class="updated">Last updated: April 29, 2026</p>
+        <p class="updated">Last updated: April 30, 2026</p>
 
         <h2>Overview</h2>
-        <p>Mochi ("we", "our", or "the app") is an intermittent fasting app designed for women who want to sync their fasting schedule with their menstrual cycle. We are committed to protecting your privacy. This policy explains what data we collect, how we use it, and your rights.</p>
+        <p>Mochi is an intermittent fasting app for women, operated by SYX STUDIO SDN. BHD. ("we", "our", or "the company"). We are committed to protecting your privacy. This policy explains what data Mochi collects, how we use it, and your rights.</p>
 
         <h2>Data Storage</h2>
-        <p>Your personal data is stored on your device using Apple's SwiftData framework and synced to your private iCloud container so the data follows your Apple ID across devices. We do not operate user databases of your health information &mdash; the synced copy lives in your own iCloud account, which Apple does not give us access to. The only server we operate is a thin proxy that forwards AI companion requests to Anthropic (see "AI Companion" below).</p>
+        <p>Your personal data is stored on your device using Apple's SwiftData framework and synced to your private iCloud container so the data follows your Apple ID across devices. We do not operate user databases of your health information. The synced copy lives in your own iCloud account, which Apple does not give us access to. The only server we operate is a thin proxy that forwards AI companion requests to Anthropic (see "AI Companion" below).</p>
 
         <h2>Data We Collect</h2>
         <p>The following data is created on your device and synced to your private iCloud container:</p>
         <ul>
-            <li><strong>Cycle information:</strong> Last period date, cycle length, and calculated cycle phases.</li>
+            <li><strong>Period log:</strong> Last period date and cycle length. Used by the AI companion to soften its tone on heavy days. We do not predict cycle phases.</li>
             <li><strong>Fasting sessions:</strong> Start time, end time, duration, and body status phases reached.</li>
             <li><strong>Mood and energy logs:</strong> Optional mood and energy entries you choose to record.</li>
             <li><strong>Preferences:</strong> Your app settings, notification preferences, and onboarding choices.</li>
@@ -70,7 +88,7 @@
         <p>This data lives in your own iCloud private container. We do not have access to it. If you sign out of iCloud or disable iCloud Drive for Mochi, the data stays on the device only.</p>
 
         <h2>Subscriptions</h2>
-        <p>Mochi uses RevenueCat to manage subscriptions and in-app purchases. RevenueCat processes your subscription status through Apple's App Store. RevenueCat may collect anonymous purchase data and device identifiers for subscription management purposes. For details, see <a href="https://www.revenuecat.com/privacy/" style="color: #F8A4B8;">RevenueCat's Privacy Policy</a>.</p>
+        <p>Mochi uses RevenueCat to manage subscriptions and in-app purchases. RevenueCat processes your subscription status through Apple's App Store. RevenueCat may collect anonymous purchase data and device identifiers for subscription management purposes. For details, see <a href="https://www.revenuecat.com/privacy/">RevenueCat's Privacy Policy</a>.</p>
 
         <h2>Analytics</h2>
         <p>We use PostHog (hosted in the EU) to understand how people use Mochi so we can improve the app. PostHog receives:</p>
@@ -114,7 +132,7 @@
         <p>We may update this privacy policy from time to time. Changes will be posted on this page with an updated date.</p>
 
         <h2>Contact</h2>
-        <p>If you have questions about this privacy policy, please contact us at <a href="mailto:syxstudio.app@gmail.com" style="color: #F8A4B8;">syxstudio.app@gmail.com</a>.</p>
+        <p>If you have questions about this privacy policy, please contact us at <a href="mailto:admin@syxstudio.com">admin@syxstudio.com</a>.</p>
     </div>
 </body>
 </html>
