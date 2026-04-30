@@ -16,10 +16,10 @@
          - mochi-site/terms.html — IP and liability sections name same entity
 
        Mochi product card (hardcoded copy + App Store link):
-         - Product name "Mochi" must match iOS app's product name
+         - Product name "Mochi" must match iOS app's product name (currently "Mochi: Period Fasting" on App Store)
          - One-liner and description should align with strategy/strategy.md positioning
            (currently: lenient protocol-based fasting, NOT cycle-synced phase prediction)
-         - App Store link is currently a placeholder (id6741412323) — replace with real URL when known
+         - App Store link points to id 6760256618 (Mochi: Period Fasting). URL persists across Org migration; only the seller name changes.
 
        Contact email shown in homepage:
          Public surfaces use admin@syxstudio.com (forwards to syxstudio.app@gmail.com via Cloudflare Email Routing).
@@ -193,11 +193,9 @@
   }
 
   .product-card {
-    display: grid;
-    grid-template-columns: 1.4fr 1fr;
-    gap: 64px; align-items: center;
     background: #fff; border: 0.5px solid rgba(42,34,27,0.1);
     border-radius: 24px; padding: 64px 56px;
+    max-width: 720px;
   }
   .product-glyph {
     width: 56px; height: 56px; border-radius: 14px;
@@ -346,8 +344,7 @@
     .hero { padding-top: 64px; padding-bottom: 96px; }
     .about, .products, .contact { padding-top: 96px; padding-bottom: 96px; }
     .two-col { grid-template-columns: 1fr; gap: 32px; }
-    .product-card { grid-template-columns: 1fr; padding: 40px 28px; gap: 40px; }
-    .product-card .phone { order: -1; }
+    .product-card { padding: 40px 28px; }
     .footer-grid { grid-template-columns: 1fr; gap: 20px; }
     .foot-links { justify-content: flex-start; }
   }
@@ -358,9 +355,6 @@
     .hero { padding-top: 48px; padding-bottom: 72px; }
     .about, .products, .contact { padding-top: 72px; padding-bottom: 72px; }
     .product-card { padding: 32px 22px; }
-    .phone { width: 240px; height: 480px; }
-    .phone-content { bottom: 80px; }
-    .phone-card { height: 180px; }
   }
 </style>
 </head>
@@ -422,7 +416,7 @@
         <h2 class="product-h">Mochi</h2>
         <p class="product-tag">Intermittent fasting that flexes when your body needs it to.</p>
         <p class="product-body">Most fasting apps push the same target every day. Mochi lets you go shorter on the days your body asks for it, without breaking your streak.</p>
-        <a class="cta" href="https://apps.apple.com/app/mochi-cycle-fasting/id6741412323">
+        <a class="cta" href="https://apps.apple.com/app/mochi-period-fasting/id6760256618">
           <svg class="cta-apple" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.05 12.04c-.03-3.07 2.51-4.55 2.62-4.62-1.43-2.09-3.66-2.38-4.45-2.41-1.89-.19-3.69 1.11-4.65 1.11-.97 0-2.45-1.08-4.03-1.05-2.07.03-3.99 1.21-5.05 3.06-2.16 3.74-.55 9.27 1.55 12.31 1.03 1.49 2.25 3.16 3.86 3.1 1.55-.06 2.13-1 4-1 1.86 0 2.39 1 4.03.97 1.66-.03 2.72-1.51 3.74-3.01 1.18-1.73 1.66-3.4 1.69-3.49-.04-.02-3.24-1.24-3.27-4.93zM14.05 3.34c.86-1.04 1.43-2.49 1.27-3.93-1.23.05-2.71.82-3.6 1.86-.79.92-1.49 2.39-1.3 3.81 1.37.11 2.77-.7 3.63-1.74z"></path></svg>
           <span>Download on the App Store</span>
         </a>
@@ -432,23 +426,6 @@
           <span>iOS 17+</span>
           <span class="meta-dot" aria-hidden="true">·</span>
           <span>Health</span>
-        </div>
-      </div>
-      <div class="product-phone" aria-hidden="true">
-        <div class="phone">
-          <div class="phone-screen">
-            <div class="phone-notch"></div>
-            <div class="phone-time">9:41</div>
-            <div class="phone-content">
-              <div class="phone-tag">app shot · placeholder</div>
-              <div class="phone-card">
-                <div class="phone-ring">16:8</div>
-              </div>
-              <div class="phone-bar med"></div>
-              <div class="phone-bar short"></div>
-            </div>
-            <div class="phone-indicator"></div>
-          </div>
         </div>
       </div>
     </article>
